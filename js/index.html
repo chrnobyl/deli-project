@@ -4,24 +4,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+        <link rel="stylesheet" href="/Users/cbuggelli/Desktop/FlatironLabs/javascript/deli project/js/styles.css">
     <meta charset="utf-8">
     <title>Delis</title>
   </head>
-  <body>
-    <div class="container">
+  <body id="body">
+    <h1>Deli API</h1>
+    <div class="container" background>
       <div id="deliContainer">
+        <div class="row">
+          <div class="col m12 align="center"">
+            <form id="newDeli">
+              <input type="text" placeholder="Deli Name, por favor" name="name">
+              <input type="text" placeholder="address" name="address">
+              <input type="number" placeholder="rating" name="rating">
+              <input type="checkbox" id="beer" name="beer" value="true"><label for="beer">Beer</label>
+              <input type="checkbox" id="cat" name="cat"><label for="cat">Cat</label>
+
+              <input type="submit" id="deliButton">
+            </form>
+
+          </div>
+
+        </div>
+
     </div>
   </div>
 
-    <form id="newDeli">
-      <input type="text" placeholder="Deli Name, por favor" name="name">
-      <input type="text" placeholder="address" name="address">
-      <input type="number" placeholder="rating" name="rating">
-      <input type="checkbox" name="beer" value="true">
-      <input type="checkbox" name="cat" value="true" >
 
-      <input type="submit" id="deliButton">
-    </form>
+
 
 
     <script
