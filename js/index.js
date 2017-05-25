@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  Deli()
+  DeliRequest()
 
   $("#deliButton").on("click", function(event){
     event.preventDefault()
@@ -19,12 +19,30 @@ $(document).ready(function () {
   })
 })
 
-function  Deli(){
+function DeliRequest(){
    $.ajax({
     url: 'http://localhost:3000/api/v1/delis',
     success: function (response) {
-      formatDelis(response)
+      createDelis(response)
+      formatDelis()
+
     }
+  })
+}
+
+function createDelis(response){
+  let allDelis = []
+  response.forEach(function(object){
+
+    var d = new Deli(object)
+    allDelis.push(d)
+  })
+  appendDelis(allDelis)
+}
+
+function appendDelis(array){
+  array.forEach(function(object){
+    object.render()
   })
 }
 
@@ -54,25 +72,25 @@ function addDeli(arg) {
 }
 
 
-function formatDelis(response){
-  let allDelis = response
-
-  allDelis.forEach(function(deli){
-    let container = $("#deliContainer")
-    let deliString = ''
-
-    deliString += `<div><h1>${deli.name}</h1>`
-    deliString += `<p>${deli.address}</p>`
-    deliString += `<p>${deli.rating}</p></div>`
-    deliString += `<p class="beer">Beer: ${deli.beer}</p></div>`
-    deliString += `<p class='cat'>Cat: ${deli.cat}</p></div>`
-    container.append(deliString)
-    let last = container[container.length]
-  })
-
-  appendCatImage()
-  appendBeerImage()
-}
+// function formatDelis(response){
+//   let allDelis = response
+//
+//   allDelis.forEach(function(deli){
+//     let container = $("#deliContainer")
+//     let deliString = ''
+//
+//     deliString += `<div><h1>${deli.name}</h1>`
+//     deliString += `<p>${deli.address}</p>`
+//     deliString += `<p>${deli.rating}</p></div>`
+//     deliString += `<p class="beer">Beer: ${deli.beer}</p></div>`
+//     deliString += `<p class='cat'>Cat: ${deli.cat}</p></div>`
+//     container.append(deliString)
+//     let last = container[container.length]
+//   })
+//
+//   appendCatImage()
+//   appendBeerImage()
+// }
 
 function appendCatImage(){
   let cats = $('.cat')
